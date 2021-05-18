@@ -54,7 +54,7 @@ SDL_LIBS   = $(shell $(SDL_CONFIG) --libs 2> /dev/null)
 
 # use fast x86 assembly on ia32 machines? (auto-disabled for
 # any other cpu.)
-USE_X86_ASM=yes
+USE_X86_ASM=no
 
 # use optimized m68k assembly for amiga
 # requires vasm from http://sun.hasenbraten.de/vasm/
@@ -74,7 +74,7 @@ USE_SOUND=yes
 # ALSA audio support? (req: alsa-lib and alsa-kernel modules
 # >= 1.0.1.  v0.9.8 and v1.0.0 might work, but not supported.
 # If not Linux, ALSA will be automatically be disabled.)
-USE_ALSA=yes
+USE_ALSA=no
 # OSS audio support? (for Unix. enabled on Linux and FreeBSD.
 # automatically disabled on other platforms: see snd_sys.h)
 USE_OSS=yes
@@ -85,10 +85,10 @@ USE_SUNAUDIO=yes
 USE_SDLAUDIO=yes
 
 # include target's MIDI driver if available?
-USE_MIDI=yes
+USE_MIDI=no
 
 # CDAudio support?
-USE_CDAUDIO=yes
+USE_CDAUDIO=no
 # use SDL cdaudio? (otherwise platform specific cdrom code will
 # be used.  The only problem with SDL_cdrom is that it lacks
 # proper volume controls.  See cd_unix.h for the availability of
@@ -115,7 +115,7 @@ USE_MGL=no
 USE_WINSOCK2=no
 
 # use Serial driver for DOS networking?
-USE_SERIAL=yes
+USE_SERIAL=no
 # use WatTCP (WATT-32) for DOS UDP networking?
 USE_WATT32=yes
 # use Beame & Whiteside TCP for DOS networking?
@@ -124,10 +124,10 @@ USE_BWTCP=yes
 USE_MPATH=no
 
 # Enable/disable codecs for streaming music support:
-USE_CODEC_WAVE=yes
+USE_CODEC_WAVE=no
 USE_CODEC_FLAC=no
-USE_CODEC_MP3=yes
-USE_CODEC_VORBIS=yes
+USE_CODEC_MP3=no
+USE_CODEC_VORBIS=no
 USE_CODEC_OPUS=no
 # either mikmod or xmp
 USE_CODEC_MIKMOD=no
@@ -135,7 +135,7 @@ USE_CODEC_XMP=no
 USE_CODEC_UMX=no
 # either timidity (preferred) or wildmidi (both possible
 # but not needed nor meaningful)
-USE_CODEC_TIMIDITY=yes
+USE_CODEC_TIMIDITY=no
 USE_CODEC_WILDMIDI=no
 # which library to use for mp3 decoding: mad or mpg123
 MP3LIB=mad
@@ -338,8 +338,8 @@ CPPFLAGS+= -DNO_SDL_AUDIO
 endif
 endif
 
-USE_SDLCD=yes
-ifeq ($(USE_CDAUDIO),yes)
+USE_SDLCD=no
+ifeq ($(USE_CDAUDIO),no)
 ifeq ($(USE_SDLCD),yes)
 CPPFLAGS+= -DWITH_SDLCD
 endif

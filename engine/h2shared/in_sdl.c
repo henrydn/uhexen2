@@ -197,8 +197,6 @@ void IN_ActivateMouse (void)
 
 	/* nuke events from when mouse was disabled: */
 	SDL_PumpEvents ();
-	if (mouseinitialized)
-		SDL_GetRelativeMouseState (NULL, NULL);
 	IN_JoyTrackballMove (NULL, NULL);
 }
 
@@ -241,7 +239,6 @@ static void IN_StartupMouse (void)
 		mouseactivatetoggle = true;
 		mouseactive = true;
 		SDL_WM_GrabInput (SDL_GRAB_ON);
-		SDL_GetRelativeMouseState (NULL, NULL);
 	}
 }
 
@@ -405,7 +402,6 @@ static void IN_DiscardMove (void)
 	if (mouseinitialized)
 	{
 		old_mouse_x = old_mouse_y = 0;
-		SDL_GetRelativeMouseState (NULL, NULL);
 	}
 	IN_JoyTrackballMove (NULL, NULL);
 
@@ -435,8 +431,6 @@ void IN_Move (usercmd_t *cmd)
 	x = 0;
 	y = 0;
 
-	if (mouseactive)
-		SDL_GetRelativeMouseState(&x, &y);
 	if (app_active && trackballactive)
 		IN_JoyTrackballMove (&x, &y);
 	if (x != 0 || y != 0)
@@ -1068,16 +1062,10 @@ void IN_SendKeyEvents (void)
 					sym = 0;
 				else	sym = SDLK_EQUALS;
 				break;
-			case 178: /* the '²' key */
+			case 178: /* the 'ï¿½' key */
 				sym = '~';
 				break;
 			default:
-			/* If we are not directly handled and still above 255,
-			 * just force it to 0. kill unsupported international
-			 * characters, too.  */
-				if ((sym >= SDLK_WORLD_0 && sym <= SDLK_WORLD_95) ||
-									sym > 255)
-					sym = 0;
 				break;
 			}
 			if (!IN_JoystickBlockDoubledKeyEvents(sym))
