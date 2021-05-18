@@ -1,5 +1,7 @@
 # Hexen 2 port to WebAssembly
 
+[PLAY HEXEN II IN YOUR BROWSER NOW](https://henrydn.github.io/uhexen2/docs/index.html)
+
 ## Introduction
 
 In 2000, Raven software, the original developer of [Hexen 2](https://en.wikipedia.org/wiki/Hexen_II) released the source code of the game engine into the [public domain](https://www.shacknews.com/article/10452/hexen-2-source-code-released). Since then, many source ports have been created, the most popular of which seems to be [Hexen II: Hammer of Thyrion](http://uhexen2.sourceforge.net/). The *Hexen II: Hammer of Thyrion* project has ported the game to Mac, Linux, Amiga, and other platforms, fixing many bugs in the process and bringing new features like OpenGL and SDL support to the game.
@@ -13,8 +15,9 @@ Even though the source code is public domain, the game isn't, and therefore the 
 ## How to build
  
 - Install Emscripten
-- Copy the original game data directory (Data1) to the /engine/hexen2 director
+- Copy the original game data directory (Data1) to the /engine/hexen2 directory
 - Run build.sh in the /engine/hexen2 directory
+- Serve the contents of /engine/hexen2/em on a webserver
 
 ## Known issues
 
